@@ -46,7 +46,6 @@ Use [this Android application](https://github.com/brendan-myers/rpi3-wifi-conf-a
         quit
 
 
-
 ## Running the script
 
 Make script executable:
@@ -61,4 +60,11 @@ To run:
 
 To run on startup, edit `/etc/rc.local` and add:
 
-    (sleep 10;/path/to/script/./run.py)&
+        sleep 10
+        echo -e 'power on
+        pairable on
+        discoverable on
+        agent NoInputNoOutput
+        default-agent
+        ' | sudo bluetoothctl
+        /path/to/script/./run.py)&
